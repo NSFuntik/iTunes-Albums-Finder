@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AlbumViewController.swift
 //  iTunesAPI
 //
 //  Created by Mikhailov on 25.11.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AlbumViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
