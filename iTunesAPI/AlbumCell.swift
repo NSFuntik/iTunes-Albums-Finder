@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCollectionCell: UICollectionViewCell {
+class AlbumCell: UICollectionViewCell {
 
     @IBOutlet weak var imageMask: UIView!
     @IBOutlet weak var albumImage: UIImageView!
@@ -27,18 +27,6 @@ class SearchCollectionCell: UICollectionViewCell {
         albumImage.applyshadowWithCorner(containerView: imageMask, cornerRadious: 10)
         albumTitleLabel.text = album.collectionName.uppercased()
         albumArtistLabel.text = album.artistName.uppercased()
-    }
-    
-}
-
-@IBDesignable
-class RoundedImageView: UIImageView {
-    
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            layer.cornerRadius = cornerRadius
-            layer.masksToBounds = cornerRadius > 0
-        }
     }
     
 }

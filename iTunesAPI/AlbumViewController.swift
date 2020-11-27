@@ -45,7 +45,7 @@ class AlbumViewController: UIViewController {
     }
     
     func loadTracks() {
-        DataService.instance.getAlbumTracks(collectionId: album.collectionId) { (requestedTracks) in
+        DataService.shared.getAlbumTracks(collectionId: album.collectionId) { (requestedTracks) in
             self.tracks = requestedTracks
             DispatchQueue.main.async {
                 self.tableView.reloadData()

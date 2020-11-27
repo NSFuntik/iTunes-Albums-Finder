@@ -15,10 +15,9 @@
 		11171954256E39A900857233 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11171953256E39A900857233 /* Main.storyboard */; };
 		11171959256E3A2200857233 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11171958256E3A2200857233 /* AlbumModel.swift */; };
 		1117195C256E3B8D00857233 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117195B256E3B8D00857233 /* AlbumViewController.swift */; };
-		1117195F256E3CB300857233 /* SearchCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117195E256E3CB300857233 /* SearchCollectionCell.swift */; };
-		11171962256E3D2F00857233 /* iTunesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11171961256E3D2F00857233 /* iTunesService.swift */; };
+		1117195F256E3CB300857233 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117195E256E3CB300857233 /* AlbumCell.swift */; };
+		11171962256E3D2F00857233 /* iTunesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11171961256E3D2F00857233 /* iTunesDataService.swift */; };
 		11171965256E3D6500857233 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11171964256E3D6500857233 /* TrackCell.swift */; };
-		11171980256EE6CA00857233 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1117197F256EE6CA00857233 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,10 +44,9 @@
 		11171953256E39A900857233 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		11171958256E3A2200857233 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		1117195B256E3B8D00857233 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
-		1117195E256E3CB300857233 /* SearchCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionCell.swift; sourceTree = "<group>"; };
-		11171961256E3D2F00857233 /* iTunesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesService.swift; sourceTree = "<group>"; };
+		1117195E256E3CB300857233 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		11171961256E3D2F00857233 /* iTunesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesDataService.swift; sourceTree = "<group>"; };
 		11171964256E3D6500857233 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
-		1117197F256EE6CA00857233 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +81,7 @@
 			children = (
 				11171982256EEA6900857233 /* App */,
 				11171983256EEA8300857233 /* Views */,
-				1117197F256EE6CA00857233 /* ViewController.swift */,
-				111719A1256EFEAF00857233 /* Album */,
+				111719A1256EFEAF00857233 /* Model */,
 				11171947256E391D00857233 /* Assets.xcassets */,
 				11171949256E391D00857233 /* LaunchScreen.storyboard */,
 				1117194C256E391D00857233 /* Info.plist */,
@@ -97,7 +94,7 @@
 			children = (
 				1117193E256E391900857233 /* AppDelegate.swift */,
 				11171940256E391900857233 /* SceneDelegate.swift */,
-				11171961256E3D2F00857233 /* iTunesService.swift */,
+				11171961256E3D2F00857233 /* iTunesDataService.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -106,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				11171942256E391900857233 /* SearchViewController.swift */,
-				1117195E256E3CB300857233 /* SearchCollectionCell.swift */,
+				1117195E256E3CB300857233 /* AlbumCell.swift */,
 				1117195B256E3B8D00857233 /* AlbumViewController.swift */,
 				11171964256E3D6500857233 /* TrackCell.swift */,
 				11171953256E39A900857233 /* Main.storyboard */,
@@ -114,12 +111,12 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		111719A1256EFEAF00857233 /* Album */ = {
+		111719A1256EFEAF00857233 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				11171958256E3A2200857233 /* AlbumModel.swift */,
 			);
-			name = Album;
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,15 +190,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11171980256EE6CA00857233 /* ViewController.swift in Sources */,
 				11171965256E3D6500857233 /* TrackCell.swift in Sources */,
 				11171943256E391900857233 /* SearchViewController.swift in Sources */,
 				1117195C256E3B8D00857233 /* AlbumViewController.swift in Sources */,
 				1117193F256E391900857233 /* AppDelegate.swift in Sources */,
-				11171962256E3D2F00857233 /* iTunesService.swift in Sources */,
+				11171962256E3D2F00857233 /* iTunesDataService.swift in Sources */,
 				11171941256E391900857233 /* SceneDelegate.swift in Sources */,
 				11171959256E3A2200857233 /* AlbumModel.swift in Sources */,
-				1117195F256E3CB300857233 /* SearchCollectionCell.swift in Sources */,
+				1117195F256E3CB300857233 /* AlbumCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

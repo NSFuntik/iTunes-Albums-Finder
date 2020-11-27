@@ -12,19 +12,23 @@ let ALBUM_SONGS_URL = "https://itunes.apple.com/lookup?entity=song&id="
 
 class DataService {
     
-    static let instance = DataService()
+    static let shared = DataService()
     
-    func getAlbums (searchRequest: String, complition: @escaping ([AlbumModel])->()) {
+    func getAlbums (searchRequest: String, complition: @escaping ([AlbumModel]) -> ()) {
+        
         var albums = [AlbumModel]()
         let searchString = searchRequest.replacingOccurrences(of: " ", with: "+")
         let url = URL(string: "\(BASE_URL)\(searchString)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         let session = URLSession.shared
         session.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                    if let albumsResults = json["results"] as? NSArray {
-                        for album in albumsResults {
+                    if let jsonResults = json["results"] as? NSArray {
+                        for album in jsonResults {
                             if let albumInfo = album as? [String: AnyObject] {
                                 guard let artistName = albumInfo["artistName"] as? String else {return}
                                 guard let artworkUrl100 = albumInfo["artworkUrl100"] as? String else {return}
@@ -34,7 +38,14 @@ class DataService {
                                 guard let primaryGenreName = albumInfo["primaryGenreName"] as? String else {return}
                                 guard let releaseDate = albumInfo["releaseDate"] as? String else {return}
                                 let releaseDateFormatted = releaseDate.prefix(4)
-                                let albumInstance = AlbumModel(artistName: artistName, artworkUrl100: artworkUrl100, collectionId: collectionId, collectionName: collectionName, country: country, primaryGenreName: primaryGenreName, releaseDate: String(releaseDateFormatted))
+                                let albumInstance = AlbumModel(artistName: artistName,
+                                                               artworkUrl100: artworkUrl100,
+                                                               collectionId: collectionId,
+                                                               collectionName: collectionName,
+                                                               country: country,
+                                                               primaryGenreName:
+                                                                primaryGenreName,
+                                                               releaseDate: String(releaseDateFormatted))
                                 albums.append(albumInstance)
                             }
                         }
@@ -44,9 +55,6 @@ class DataService {
                     print(error.localizedDescription)
                 }
             }
-            if error != nil {
-                print(error!.localizedDescription)
-            }
         }.resume()
     }
     
@@ -55,13 +63,15 @@ class DataService {
         let url = URL(string: "\(ALBUM_SONGS_URL)\(collectionId)")
         let session = URLSession.shared
         session.dataTask(with: url!) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                    if let trackResults = json["results"] as? NSArray {
-                        for song in trackResults {
-                            // 0 element is album info
-                            if trackResults.index(of: song) != 0 {
+                    if let jsonResults = json["results"] as? NSArray {
+                        for song in jsonResults {
+                            if jsonResults.index(of: song) != 0 {
                                 if let songInfo = song as? [String: AnyObject] {
                                     guard let trackName = songInfo["trackName"] as? String else {return}
                                     guard let trackNumber = songInfo["trackNumber"] as? Int else {return}
@@ -76,12 +86,8 @@ class DataService {
                     print(error.localizedDescription)
                 }
             }
-            if error != nil {
-                print(error!.localizedDescription)
-            }
         }.resume()
     }
-    
 }
 
 
