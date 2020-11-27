@@ -5,6 +5,6 @@ iTunes albums search app.
 ![SearchView] [SearchView] 
 ![DetailView] [DetailView] 
 
-[SearchView]: /SearchView.png | width=480
-[DetailView]: /DetailView.png | width=480
+[SearchView]: (/SearchView.png | width=480)
+[DetailView]: (/DetailView.png | width=480)
 
